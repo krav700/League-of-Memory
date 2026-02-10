@@ -3,15 +3,19 @@ import '../styles/App.css'
 
 async function getChampsJSON(setChampName) {
   const randomChamp = Math.floor(Math.random() * 172);
-  const champJSON = await fetch('https://ddragon.leagueoflegends.com/cdn/14.1.1/data/en_US/champion.json')
+  const champJSON = await fetch('https://ddragon.leagueoflegends.com/cdn/16.1.1/data/en_US/champion.json')
   .then(res => res.json())
   .then(data => data.data)
   .then(data => {
+    console.log(data)
+    console.log(randomChamp)
+    console.log(Object.keys(data));
+    console.log(Object.keys(data)[randomChamp])
     setChampName(Object.keys(data)[randomChamp]);
   });
 }
 
-function App() {
+function ChampionImage() {
   const [champName, setChampName] = useState('');
 
   useEffect(() => {
@@ -22,19 +26,38 @@ function App() {
     }
   }, [])
 
-  useEffect(() => {
-    const timeOut = setInterval(() => {
-      getChampsJSON(setChampName);
-    }, 3000)
+  // useEffect(() => {
+  //   const timeOut = setInterval(() => {
+  //     getChampsJSON(setChampName);
+  //   }, 3000)
 
-    return () => {
-      clearInterval(timeOut);
-    }
-  }, [])
+  //   return () => {
+  //     clearInterval(timeOut);
+  //   }
+  // }, [])
 
   return (
     <>
-      <img src={`https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champName}_0.jpg`} />
+      <img src={`https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champName}_0.jpg`} />
+    </>
+  )
+}
+
+function App() {
+
+  return (
+    <>
+      <ChampionImage />
+      <ChampionImage />
+      <ChampionImage />
+      <ChampionImage />
+      <ChampionImage />
+      <br />
+      <ChampionImage />
+      <ChampionImage />
+      <ChampionImage />
+      <ChampionImage />
+      <ChampionImage />
     </>
   )
 }
