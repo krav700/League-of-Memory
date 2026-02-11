@@ -1,30 +1,24 @@
 import { useState, useEffect } from 'react'
 import '../styles/App.css'
+import cardBack from '../assets/Your_Shop_Banner.webp'
 
-async function getChampsJSON(setChampName) {
-  const randomChamp = Math.floor(Math.random() * 172);
-  const champJSON = await fetch('https://ddragon.leagueoflegends.com/cdn/16.1.1/data/en_US/champion.json')
+async function getChampsJSON() {
+  let champsNames;
+  await fetch('https://ddragon.leagueoflegends.com/cdn/16.1.1/data/en_US/champion.json')
   .then(res => res.json())
   .then(data => data.data)
   .then(data => {
-    console.log(data)
-    console.log(randomChamp)
-    console.log(Object.keys(data));
-    console.log(Object.keys(data)[randomChamp])
-    setChampName(Object.keys(data)[randomChamp]);
+    // console.log(data)
+    // console.log(randomChamp)
+    // console.log(Object.keys(data));
+    // console.log(Object.keys(data)[randomChamp])
+    champsNames = Object.keys(data);
   });
+  // console.log(champsNames);
+  return champsNames;
 }
 
-function ChampionImage() {
-  const [champName, setChampName] = useState('');
-
-  useEffect(() => {
-    let firstRun = true;
-    if (firstRun) {
-      firstRun = false;
-      getChampsJSON(setChampName);
-    }
-  }, [])
+function ChampionImage({champName}) {
 
   // useEffect(() => {
   //   const timeOut = setInterval(() => {
@@ -35,29 +29,72 @@ function ChampionImage() {
   //     clearInterval(timeOut);
   //   }
   // }, [])
-
+  let backFacing = true;
   return (
-    <>
-      <img src={`https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champName}_0.jpg`} />
-    </>
+    <div className='card-container'  onClick={(e) => {
+        if (backFacing) {
+          backFacing = false;
+          console.log()
+          e.target.parentElement.classList.add('rotate');
+        } else {
+          backFacing = true;
+          e.target.parentElement.classList.remove('rotate');
+        }
+
+      }}>
+      <img className='card-back' src={`https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champName}_0.jpg`} />
+      <img className='card' src={cardBack} />
+    </div>
   )
 }
 
-function App() {
+function getChampionName(setCardArray) {
+  getChampsJSON().then(data => {
+        for (let i = 0; i < 10; i++) {
+          const randomChamp = Math.floor(Math.random() * 172);
+          setCardArray(prev => [...prev, data[randomChamp]]);
+        }
+      });
+}
 
+function App() {
+  const [cardArray, setCardArray] = useState([]);
+
+  let firstRun = true;
+  useEffect(() => {
+    if (firstRun) {
+      firstRun = false;
+      getChampionName(setCardArray);
+    }
+    return () => {
+      setCardArray([]);
+    }
+  }, []);
+
+  useEffect(() => {
+    console.log(cardArray);
+  }, [cardArray])
   return (
     <>
-      <ChampionImage />
-      <ChampionImage />
-      <ChampionImage />
-      <ChampionImage />
-      <ChampionImage />
+      <div className='cards-container'>
+        {cardArray.map(card => {
+          return <ChampionImage champName={card} key={card}/>  
+        })}
+        {cardArray.map(card => {
+          return <ChampionImage champName={card} key={card}/>  
+        })}
+      </div>
+      {/* <ChampionImage champName={cardArray[0]}/>
+      <ChampionImage champName={cardArray[1]}/>
+      <ChampionImage champName={cardArray[2]}/>
+      <ChampionImage champName={cardArray[3]}/>
+      <ChampionImage champName={cardArray[4]}/>
       <br />
-      <ChampionImage />
-      <ChampionImage />
-      <ChampionImage />
-      <ChampionImage />
-      <ChampionImage />
+      <ChampionImage champName={cardArray[5]}/>
+      <ChampionImage champName={cardArray[6]}/>
+      <ChampionImage champName={cardArray[7]}/>
+      <ChampionImage champName={cardArray[8]}/>
+      <ChampionImage champName={cardArray[9]}/> */}
     </>
   )
 }
