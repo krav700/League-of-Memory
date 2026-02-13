@@ -86,14 +86,14 @@ function fillArrayWithChamps(numOfCards, setCardArray, nameArray) {
         const randomChamp = Math.floor(Math.random() * 172);
         setCardArray((prev) => [
             ...prev,
-            { name: nameArray[randomChamp], lives: 2 },
+            {id: prev.length, name: nameArray[randomChamp] },
         ]);
     }
 }
 
 function App() {
     const [nameArray, setNameArray] = useState([]);
-    const [cardArray, setCardArray] = useState([{ name: "", lives: 2 }]);
+    const [cardArray, setCardArray] = useState([{id: 0, name: "" }]);
 
     let firstRun = true;
     useEffect(() => {
@@ -117,12 +117,19 @@ function App() {
     return (
         <>
             <div className="cards-container">
-                {cardArray.map((card) => {
-                    return <ChampionImage champ={card} key={card.name} />;
-                })}
-                {cardArray.map((card) => {
-                    return <ChampionImage champ={card} key={card.name} />;
-                })}
+                {cardArray.length > 0 ? 
+                <>
+                {
+                  cardArray.map((card) => {
+                    return <ChampionImage champ={card} key={card.id} />;
+                  })}
+                {
+                  cardArray.map((card) => {
+                    return <ChampionImage champ={card} key={card.id} />;
+                  })
+                }
+                </>
+                : null }
             </div>
         </>
     );
@@ -130,4 +137,5 @@ function App() {
 
 export default App;
 
-//TODO array-randomizer, lives, difficulty, champs/skins/items options, style, unique-key error
+//TODO array-randomizer, make it so it cannot give the same champ twice,
+// lives, difficulty, champs/skins/items options, style
