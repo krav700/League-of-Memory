@@ -89,6 +89,29 @@ function fillArrayWithChamps(numOfCards, setCardArray, nameArray) {
             {id: prev.length, name: nameArray[randomChamp] },
         ]);
     }
+    setCardArray((prev) => [
+      ...prev,
+      ...prev.map(card => ({
+        ...card,
+        id: crypto.randomUUID()
+      }))
+    ]);
+}
+
+function randomizeChampArray(cardArray, setCardArray) {
+  const [hasRan, setHasRan] = useState(true);
+
+  let copyArray = cardArray;
+  for (let i = 0, n = cardArray.length; i < n; i++) {
+    const randomIndex = Math.floor(Math.random() * n);
+    const temp = copyArray[i];
+    copyArray[i] = copyArray[randomIndex];
+    copyArray[randomIndex] = temp;
+  }
+  if (hasRan) {
+    setCardArray(copyArray);
+    setHasRan(false)
+  }
 }
 
 function App() {
@@ -120,9 +143,8 @@ function App() {
                 {cardArray.length > 0 ? 
                 <>
                 {
-                  cardArray.map((card) => {
-                    return <ChampionImage champ={card} key={card.id} />;
-                  })}
+                  randomizeChampArray(cardArray, setCardArray)
+                }
                 {
                   cardArray.map((card) => {
                     return <ChampionImage champ={card} key={card.id} />;
