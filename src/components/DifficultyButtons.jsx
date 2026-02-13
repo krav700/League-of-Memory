@@ -1,8 +1,14 @@
 import { useEffect } from "react";
 import "../styles/DifficultyButtons.css";
 
-function DifficultyButtons({setCardSize, setDifficulty, easy, medium, hard, lives }) {
-
+function DifficultyButtons({
+    setCardSize,
+    setDifficulty,
+    easy,
+    medium,
+    hard,
+    lives,
+}) {
     return (
         <>
             <div className="difficulty-container">

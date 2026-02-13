@@ -18,7 +18,11 @@ function App() {
                 lives={lives}
                 setCardSize={setCardSize}
             />
-            <CardsContainer cardSize={cardSize} difficulty={difficulty} lives={lives}/>
+            <CardsContainer
+                cardSize={cardSize}
+                difficulty={difficulty}
+                lives={lives}
+            />
         </>
     );
 }

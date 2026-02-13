@@ -49,6 +49,6 @@
     border-radius: 8px;
     z-index: -1;
     transition: all 500ms ease;
-    box-shadow: 0px 0px 50px rgb(40, 79, 78)
-                /* inset 0px 0px 5px black; */
+    box-shadow: 0px 0px 50px rgb(40, 79, 78);
+    /* inset 0px 0px 5px black; */
 }

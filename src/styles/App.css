@@ -8,7 +8,7 @@
     src: url("../assets/fonts/Friz\ Quadrata\ Std\ Bold.otf");
 }
 
-#root{
+#root {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -17,7 +17,8 @@
     padding-top: 5rem;
 }
 
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
     height: 100%;

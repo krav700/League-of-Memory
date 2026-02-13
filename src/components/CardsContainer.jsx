@@ -23,27 +23,25 @@ function getChampionNames(setNameArray) {
 
 function adjustCardSize(cardSize) {
     const allCards = document.querySelectorAll(".card-container");
-        if (cardSize == 5) {
-        allCards.forEach(card => {
-            card.classList.add('easy-card');
-            card.classList.remove('medium-card');
-            card.classList.remove('hard-card');
-        })
-        } else if (cardSize == 15) {
-            allCards.forEach(card => {
-                card.classList.remove('easy-card');
-                card.classList.add('medium-card');
-                card.classList.remove('hard-card');
-            })
-        } else if (cardSize == 30) {
-            allCards.forEach(card => {
-                card.classList.remove('easy-card');
-                card.classList.remove('medium-card');
-                card.classList.add('hard-card');
-            })
-        }
-    console.log(cardSize);
-    console.log(allCards);
+    if (cardSize == 5) {
+        allCards.forEach((card) => {
+            card.classList.add("easy-card");
+            card.classList.remove("medium-card");
+            card.classList.remove("hard-card");
+        });
+    } else if (cardSize == 15) {
+        allCards.forEach((card) => {
+            card.classList.remove("easy-card");
+            card.classList.add("medium-card");
+            card.classList.remove("hard-card");
+        });
+    } else if (cardSize == 30) {
+        allCards.forEach((card) => {
+            card.classList.remove("easy-card");
+            card.classList.remove("medium-card");
+            card.classList.add("hard-card");
+        });
+    }
 }
 
 function fillArrayWithChamps(numOfCards, setCardArray, nameArray) {
@@ -119,7 +117,14 @@ function CardsContainer({ difficulty, lives, cardSize }) {
                 <>
                     {randomizeChampArray(cardArray, setCardArray)}
                     {cardArray.map((card) => {
-                        return <ChampionImage cardSize={cardSize} champ={card} lives={lives} key={card.id} />;
+                        return (
+                            <ChampionImage
+                                cardSize={cardSize}
+                                champ={card}
+                                lives={lives}
+                                key={card.id}
+                            />
+                        );
                     })}
                 </>
             ) : null}

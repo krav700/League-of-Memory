@@ -94,8 +94,6 @@ function ChampionImage({ champ, lives, cardSize }) {
         } else if (cardSize == 30) {
             setSizeClass('hard');
         }
-        console.log(cardSize);
-        console.log(sizeClass)
     }, [cardSize]);
 
     return (
