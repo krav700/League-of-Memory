@@ -8,18 +8,29 @@
     src: url("../assets/fonts/Friz\ Quadrata\ Std\ Bold.otf");
 }
 
-#root,
-body {
+#root{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 3rem;
-    font-family: league-font, sans-serif;
+    padding-top: 5rem;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    /* height: 100vh;
+    margin: 0; */
 }
 
 body {
-    display: grid;
-    padding: 5%;
-    grid-template-rows: 1fr 9fr;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: league-font, sans-serif;
 }
