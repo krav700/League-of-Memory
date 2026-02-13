@@ -65,7 +65,7 @@ function randomizeChampArray(cardArray, setCardArray) {
     }
 }
 
-function CardsContainer() {
+function CardsContainer({ difficulty }) {
     const [nameArray, setNameArray] = useState([]);
     const [cardArray, setCardArray] = useState([{ id: 0, name: "" }]);
 
@@ -81,12 +81,12 @@ function CardsContainer() {
     }, []);
 
     useEffect(() => {
-        fillArrayWithChamps(5, setCardArray, nameArray);
+        fillArrayWithChamps(difficulty, setCardArray, nameArray);
 
         return () => {
             setCardArray([]);
         };
-    }, [nameArray]);
+    }, [nameArray, difficulty]);
 
     return (
         <div className="cards-container">
