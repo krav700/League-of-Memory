@@ -26,6 +26,14 @@ img {
     background: black;
 }
 
+.correct-guess {
+    box-shadow: 0px 0px 20px limegreen;
+}
+
+.wrong-guess {
+    box-shadow: 0px 0px 20px red;
+}
+
 .card,
 .card-back {
     position: absolute;
@@ -52,11 +60,11 @@ img {
 .card {
     object-fit: cover;
     transform: scale(1.5);
-    pointer-events: auto;
+    /* pointer-events: auto; */
 }
 
-.correct-match {
-    pointer-events: none !important;
+.rotate {
+    pointer-events: none;
 }
 
 .card-container:hover {

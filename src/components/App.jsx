@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import "../styles/App.css";
 import CardsContainer from "./CardsContainer.jsx";
-import DifficultyButtons from "./DifficultyButton.jsx";
+import DifficultyButtons from "./DifficultyButtons.jsx";
 
 function App() {
     const [difficulty, setDifficulty] = useState(5);
-
+    const lives = useRef(5);
     return (
         <>
             <DifficultyButtons
@@ -14,11 +14,11 @@ function App() {
                 medium={10}
                 hard={15}
             />
-            <CardsContainer difficulty={difficulty} />
+            <CardsContainer difficulty={difficulty} lives={lives}/>
         </>
     );
 }
 
 export default App;
 
-//TODO lives, difficulty, champs/skins/items options, style
+//TODO lives, champs/skins/items options, style

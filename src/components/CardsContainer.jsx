@@ -65,7 +65,7 @@ function randomizeChampArray(cardArray, setCardArray) {
     }
 }
 
-function CardsContainer({ difficulty }) {
+function CardsContainer({ difficulty, lives }) {
     const [nameArray, setNameArray] = useState([]);
     const [cardArray, setCardArray] = useState([{ id: 0, name: "" }]);
 
@@ -94,7 +94,7 @@ function CardsContainer({ difficulty }) {
                 <>
                     {randomizeChampArray(cardArray, setCardArray)}
                     {cardArray.map((card) => {
-                        return <ChampionImage champ={card} key={card.id} />;
+                        return <ChampionImage champ={card} lives={lives} key={card.id} />;
                     })}
                 </>
             ) : null}
