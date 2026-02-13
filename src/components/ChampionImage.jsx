@@ -1,4 +1,5 @@
 import cardBack from "../assets/Your_Shop_Banner.webp";
+import '../styles/ChampionImage.css';
 
 let pickedCards = ["", ""];
 
