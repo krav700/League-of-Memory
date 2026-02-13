@@ -82,8 +82,13 @@ function getChampionNames(setNameArray) {
 }
 
 function fillArrayWithChamps(numOfCards, setCardArray, nameArray) {
+    let champsSelected = [];
     for (let i = 0; i < numOfCards; i++) {
-        const randomChamp = Math.floor(Math.random() * 172);
+        let randomChamp = Math.floor(Math.random() * 172);
+        while (champsSelected.includes(randomChamp)) {
+          randomChamp = Math.floor(Math.random() * 172);
+        }
+        champsSelected.push(randomChamp);
         setCardArray((prev) => [
             ...prev,
             {id: prev.length, name: nameArray[randomChamp] },
@@ -130,7 +135,7 @@ function App() {
     }, []);
 
     useEffect(() => {
-        fillArrayWithChamps(5, setCardArray, nameArray);
+        fillArrayWithChamps(20, setCardArray, nameArray);
 
         return () => {
             setCardArray([]);
@@ -159,5 +164,5 @@ function App() {
 
 export default App;
 
-//TODO array-randomizer, make it so it cannot give the same champ twice,
+//TODO make it so it cannot give the same champ twice,
 // lives, difficulty, champs/skins/items options, style
