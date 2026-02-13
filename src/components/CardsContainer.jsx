@@ -21,6 +21,31 @@ function getChampionNames(setNameArray) {
     return true;
 }
 
+function adjustCardSize(cardSize) {
+    const allCards = document.querySelectorAll(".card-container");
+        if (cardSize == 5) {
+        allCards.forEach(card => {
+            card.classList.add('easy-card');
+            card.classList.remove('medium-card');
+            card.classList.remove('hard-card');
+        })
+        } else if (cardSize == 15) {
+            allCards.forEach(card => {
+                card.classList.remove('easy-card');
+                card.classList.add('medium-card');
+                card.classList.remove('hard-card');
+            })
+        } else if (cardSize == 30) {
+            allCards.forEach(card => {
+                card.classList.remove('easy-card');
+                card.classList.remove('medium-card');
+                card.classList.add('hard-card');
+            })
+        }
+    console.log(cardSize);
+    console.log(allCards);
+}
+
 function fillArrayWithChamps(numOfCards, setCardArray, nameArray) {
     let champsSelected = [];
     for (let i = 0; i < numOfCards; i++) {
@@ -65,7 +90,7 @@ function randomizeChampArray(cardArray, setCardArray) {
     }
 }
 
-function CardsContainer({ difficulty, lives }) {
+function CardsContainer({ difficulty, lives, cardSize }) {
     const [nameArray, setNameArray] = useState([]);
     const [cardArray, setCardArray] = useState([{ id: 0, name: "" }]);
 
@@ -94,7 +119,7 @@ function CardsContainer({ difficulty, lives }) {
                 <>
                     {randomizeChampArray(cardArray, setCardArray)}
                     {cardArray.map((card) => {
-                        return <ChampionImage champ={card} lives={lives} key={card.id} />;
+                        return <ChampionImage cardSize={cardSize} champ={card} lives={lives} key={card.id} />;
                     })}
                 </>
             ) : null}

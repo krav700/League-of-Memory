@@ -1,10 +1,12 @@
 import { useEffect } from "react";
 import cardBack from "../assets/Your_Shop_Banner.webp";
 import '../styles/ChampionImage.css';
+import { useState } from "react";
 
 let pickedCards = ["", ""];
 
-function ChampionImage({ champ, lives }) {
+function ChampionImage({ champ, lives, cardSize }) {
+    const [sizeClass, setSizeClass] = useState('easy');
 
     function lostGame() {
         if (lives.current == 0) {
@@ -68,7 +70,6 @@ function ChampionImage({ champ, lives }) {
                         }
                     });
                     lives.current = lives.current - 1;
-                    console.log(lives)
                     lostGame();
                 }, 1000);
             } else {
@@ -85,13 +86,25 @@ function ChampionImage({ champ, lives }) {
         }
     }
 
+    useEffect(() => {
+        if (cardSize == 5) {
+            setSizeClass('easy');
+        } else if (cardSize == 15) {
+            setSizeClass('medium');
+        } else if (cardSize == 30) {
+            setSizeClass('hard');
+        }
+        console.log(cardSize);
+        console.log(sizeClass)
+    }, [cardSize]);
+
     return (
         <div
-            className={`card-container ${champ.name}`}
+            className={`card-container ${champ.name}  ${sizeClass}-card`}
             onClick={(e) => handleClick(e)}
         >
             <img
-                className="card-back"
+                className={'card-back'}
                 src={`https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champ.name}_0.jpg`}
             />
             <img className="card" src={cardBack} />

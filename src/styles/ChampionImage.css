@@ -26,6 +26,21 @@ img {
     background: black;
 }
 
+.easy-card {
+    width: 150px;
+    height: 250px;
+}
+
+.medium-card {
+    width: 100px;
+    height: 200px;
+}
+
+.hard-card {
+    width: 50px;
+    height: 150px;
+}
+
 .correct-guess {
     box-shadow: 0px 0px 20px limegreen;
 }
