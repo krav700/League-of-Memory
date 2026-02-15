@@ -23,31 +23,28 @@ function getChampionNames(setNameArray) {
     return true;
 }
 
-function fillArrayWithChamps(numOfCards, setCardArray, nameArray) {
+function fillArrayWithChamps(numOfCards, nameArray) {
     let champsSelected = [];
+    let newArray = [];
     for (let i = 0; i < numOfCards; i++) {
         let randomChamp = Math.floor(Math.random() * CHAMPION_COUNT);
         while (champsSelected.includes(randomChamp)) {
             randomChamp = Math.floor(Math.random() * CHAMPION_COUNT);
         }
         champsSelected.push(randomChamp);
-        setCardArray((prev) => [
-            ...prev,
-            { id: prev.length, name: nameArray[randomChamp], skin: 0 },
-        ]);
+        newArray.push({ id: i, name: nameArray[randomChamp], skin: 0 });
     }
-    setCardArray((prev) => [
-        ...prev,
-        ...prev.map((card) => ({
-            ...card,
+    for (let i = 0, n = newArray.length; i < n; i++) {
+        newArray.push({
             id: crypto.randomUUID(),
-        })),
-    ]);
+            name: newArray[i].name,
+            skin: 0,
+        });
+    }
+    return newArray;
 }
 
-function randomizeChampArray(cardArray, setCardArray) {
-    const [hasRan, setHasRan] = useState(true);
-
+function randomizeChampArray(cardArray) {
     let copyArray = cardArray;
     for (let i = 0, n = cardArray.length; i < n; i++) {
         const randomIndex = Math.floor(Math.random() * n);
@@ -61,10 +58,7 @@ function randomizeChampArray(cardArray, setCardArray) {
         copyArray[i] = copyArray[randomIndex];
         copyArray[randomIndex] = temp;
     }
-    if (hasRan) {
-        setCardArray(copyArray);
-        setHasRan(false);
-    }
+    return copyArray;
 }
 
 async function getSkinOfChamp(champ, champsArray, skinsArray) {
@@ -93,7 +87,11 @@ async function getSkinOfChamp(champ, champsArray, skinsArray) {
     }
 }
 
-async function setSkinsOnCardArray(cardArray, setCardArray, setDoneRenderingSkins) {
+async function setSkinsOnCardArray(
+    cardArray,
+    setCardArray,
+    setDoneRenderingSkins
+) {
     let champsArray = [];
     let skinsArray = [];
     let copyOfCardArray = cardArray;
@@ -104,7 +102,19 @@ async function setSkinsOnCardArray(cardArray, setCardArray, setDoneRenderingSkin
     setDoneRenderingSkins(true);
 }
 
-function CardsContainer({ difficulty, lives, cardSize, gamemodeSkins }) {
+function CardsContainer({
+    difficulty,
+    lives,
+    setLives,
+    cardSize,
+    gamemodeSkins,
+    easyWins,
+    mediumWins,
+    hardWins,
+    setEasyWins,
+    setMediumWins,
+    setHardWins,
+}) {
     const [nameArray, setNameArray] = useState([]);
     const [cardArray, setCardArray] = useState([{ id: 0, name: "", skin: 0 }]);
     const [doneRenderingSkins, setDoneRenderingSkins] = useState(false);
@@ -121,7 +131,9 @@ function CardsContainer({ difficulty, lives, cardSize, gamemodeSkins }) {
     }, []);
 
     useEffect(() => {
-        fillArrayWithChamps(difficulty, setCardArray, nameArray);
+        const filledArray = fillArrayWithChamps(difficulty, nameArray);
+        const randomChamps = randomizeChampArray(filledArray);
+        setCardArray(randomChamps);
         return () => {
             setCardArray([]);
         };
@@ -140,17 +152,23 @@ function CardsContainer({ difficulty, lives, cardSize, gamemodeSkins }) {
         <div className="cards-container">
             {cardArray.length > 0 ? (
                 <>
-                    {randomizeChampArray(cardArray, setCardArray)}
                     {cardArray.map((card) => {
                         return (
                             <ChampionImage
                                 cardSize={cardSize}
                                 champ={card}
                                 lives={lives}
+                                setLives={setLives}
                                 key={card.id}
                                 gamemodeSkins={gamemodeSkins}
                                 difficulty={difficulty}
                                 doneRenderingSkins={doneRenderingSkins}
+                                easyWins={easyWins}
+                                mediumWins={mediumWins}
+                                hardWins={hardWins}
+                                setEasyWins={setEasyWins}
+                                setMediumWins={setMediumWins}
+                                setHardWins={setHardWins}
                             />
                         );
                     })}

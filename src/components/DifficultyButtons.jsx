@@ -8,8 +8,8 @@ function DifficultyButtons({
     medium,
     hard,
     lives,
+    setLives,
 }) {
-
     let onLoadDifficulty = true;
     useEffect(() => {
         let button;
@@ -22,7 +22,9 @@ function DifficultyButtons({
             } else if (localStorage.getItem("difficulty") == 15) {
                 button = 2;
             }
-            const diffContainer = document.querySelector(".difficulty-container");
+            const diffContainer = document.querySelector(
+                ".difficulty-container"
+            );
             diffContainer.children[0].classList.remove("disabled");
             diffContainer.children[button].classList.add("disabled");
         }
@@ -34,11 +36,16 @@ function DifficultyButtons({
                 <button
                     onClick={(e) => {
                         setDifficulty(easy);
-                        lives.current = easy;
+                        // lives.current = easy;
+                        setLives(easy);
                         setCardSize(5);
                         e.target.classList.add("disabled");
-                        e.target.parentElement.children[1].classList.remove("disabled");
-                        e.target.parentElement.lastChild.classList.remove("disabled");
+                        e.target.parentElement.children[1].classList.remove(
+                            "disabled"
+                        );
+                        e.target.parentElement.lastChild.classList.remove(
+                            "disabled"
+                        );
                         localStorage.setItem("difficulty", 5);
                     }}
                     className={`easy-button disabled`}
@@ -49,11 +56,16 @@ function DifficultyButtons({
                 <button
                     onClick={(e) => {
                         setDifficulty(medium);
-                        lives.current = medium;
+                        // lives.current = medium;
+                        setLives(medium);
                         setCardSize(10);
                         e.target.classList.add("disabled");
-                        e.target.parentElement.firstChild.classList.remove("disabled");
-                        e.target.parentElement.lastChild.classList.remove("disabled");
+                        e.target.parentElement.firstChild.classList.remove(
+                            "disabled"
+                        );
+                        e.target.parentElement.lastChild.classList.remove(
+                            "disabled"
+                        );
                         localStorage.setItem("difficulty", 10);
                     }}
                     className={"medium-button"}
@@ -64,11 +76,16 @@ function DifficultyButtons({
                 <button
                     onClick={(e) => {
                         setDifficulty(hard);
-                        lives.current = hard;
+                        // lives.current = hard;
+                        setLives(hard);
                         setCardSize(15);
                         e.target.classList.add("disabled");
-                        e.target.parentElement.firstChild.classList.remove("disabled");
-                        e.target.parentElement.children[1].classList.remove("disabled");
+                        e.target.parentElement.firstChild.classList.remove(
+                            "disabled"
+                        );
+                        e.target.parentElement.children[1].classList.remove(
+                            "disabled"
+                        );
                         localStorage.setItem("difficulty", 15);
                     }}
                     className={"hard-button"}
