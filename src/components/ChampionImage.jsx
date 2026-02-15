@@ -11,15 +11,16 @@ function ChampionImage({
     cardSize,
     gamemodeSkins,
     difficulty,
+    doneRenderingSkins
 }) {
     const [sizeClass, setSizeClass] = useState("easy");
-    const [render, forceRender] = useState(0);
+    const [, forceRender] = useState(0);
 
     useEffect(() => {
         setTimeout(() => {
             forceRender((prev) => prev + 1);
-        }, 100);
-    }, [difficulty]);
+        }, 500);
+    }, [difficulty, doneRenderingSkins]);
 
     function lostGame() {
         if (lives.current == 0) {

@@ -93,7 +93,7 @@ async function getSkinOfChamp(champ, champsArray, skinsArray) {
     }
 }
 
-async function setSkinsOnCardArray(cardArray, setCardArray) {
+async function setSkinsOnCardArray(cardArray, setCardArray, setDoneRenderingSkins) {
     let champsArray = [];
     let skinsArray = [];
     let copyOfCardArray = cardArray;
@@ -101,11 +101,13 @@ async function setSkinsOnCardArray(cardArray, setCardArray) {
         await getSkinOfChamp(copyOfCardArray[i], champsArray, skinsArray);
     }
     setCardArray(copyOfCardArray);
+    setDoneRenderingSkins(true);
 }
 
 function CardsContainer({ difficulty, lives, cardSize, gamemodeSkins }) {
     const [nameArray, setNameArray] = useState([]);
     const [cardArray, setCardArray] = useState([{ id: 0, name: "", skin: 0 }]);
+    const [doneRenderingSkins, setDoneRenderingSkins] = useState(false);
 
     let firstRun = true;
     useEffect(() => {
@@ -130,7 +132,7 @@ function CardsContainer({ difficulty, lives, cardSize, gamemodeSkins }) {
             cardArray[cardArray.length - 1].name != undefined &&
             cardArray[cardArray.length - 1].name != ""
         ) {
-            setSkinsOnCardArray(cardArray, setCardArray);
+            setSkinsOnCardArray(cardArray, setCardArray, setDoneRenderingSkins);
         }
     }, [cardArray]);
 
@@ -148,6 +150,7 @@ function CardsContainer({ difficulty, lives, cardSize, gamemodeSkins }) {
                                 key={card.id}
                                 gamemodeSkins={gamemodeSkins}
                                 difficulty={difficulty}
+                                doneRenderingSkins={doneRenderingSkins}
                             />
                         );
                     })}
