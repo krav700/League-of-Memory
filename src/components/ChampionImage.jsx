@@ -113,14 +113,16 @@ function ChampionImage({
         <div
             className={`card-container ${champ.name}  ${sizeClass}-card`}
             onClick={(e) => handleClick(e)}
+            draggable={false}
         >
             <img
                 className={"card-back"}
                 src={`https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${
                     champ.name
                 }_${gamemodeSkins ? champ.skin ?? "0" : "0"}.jpg`}
+                draggable={false}
             />
-            <img className="card" src={cardBack} />
+            <img className="card" src={cardBack} draggable={false} />
         </div>
     );
 }
