@@ -9,7 +9,7 @@ function App() {
     const [difficulty, setDifficulty] = useState(localStorage.getItem("difficulty")?? 5);
     const [cardSize, setCardSize] = useState(localStorage.getItem("difficulty")?? 5);
     const [gamemodeSkins, setGamemodeSkins] = useState(saveGameMode?? false);
-    let lives = useRef(5);
+    let lives = useRef(localStorage.getItem("difficulty")?? 5);
     return (
         <>
             <h1>League of Memory</h1>
