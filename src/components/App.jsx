@@ -11,6 +11,7 @@ function App() {
     let lives = useRef(5);
     return (
         <>
+            <h1>League of Memory</h1>
             <GameModeButtons setGamemodeSkins={setGamemodeSkins} />
             <DifficultyButtons
                 difficulty={difficulty}
