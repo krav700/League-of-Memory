@@ -20,11 +20,8 @@ html,
 body {
     margin: 0;
     padding: 0;
-    height: 100%;
+    height: 100vh;
     width: 100%;
-    overflow: hidden;
-    /* height: 100vh;
-    margin: 0; */
 }
 
 body {
@@ -53,8 +50,10 @@ body::after {
 h1 {
     margin: 0;
     --logo-color: hsl(57, 50%, 50%);
-    --logo-border-color: hsl(57, 0%, 25%); 
+    --logo-border-color: hsl(57, 0%, 25%);
     color: var(--logo-color);
-    text-shadow: 2px 0 var(--logo-border-color), -2px 0 var(--logo-border-color), 0 2px var(--logo-border-color), 0 -2px var(--logo-border-color),
-               1px 1px var(--logo-border-color), -1px -1px var(--logo-border-color), 1px -1px var(--logo-border-color), -1px 1px var(--logo-border-color);
+    text-shadow: 2px 0 var(--logo-border-color), -2px 0 var(--logo-border-color),
+        0 2px var(--logo-border-color), 0 -2px var(--logo-border-color),
+        1px 1px var(--logo-border-color), -1px -1px var(--logo-border-color),
+        1px -1px var(--logo-border-color), -1px 1px var(--logo-border-color);
 }

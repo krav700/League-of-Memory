@@ -3,9 +3,11 @@
     position: absolute;
     right: 1rem;
     top: 1rem;
-    --logo-border-color: hsl(57, 0%, 25%); 
-    text-shadow: 2px 0 var(--logo-border-color), -2px 0 var(--logo-border-color), 0 2px var(--logo-border-color), 0 -2px var(--logo-border-color),
-               1px 1px var(--logo-border-color), -1px -1px var(--logo-border-color), 1px -1px var(--logo-border-color), -1px 1px var(--logo-border-color);
+    --logo-border-color: hsl(57, 0%, 25%);
+    text-shadow: 2px 0 var(--logo-border-color), -2px 0 var(--logo-border-color),
+        0 2px var(--logo-border-color), 0 -2px var(--logo-border-color),
+        1px 1px var(--logo-border-color), -1px -1px var(--logo-border-color),
+        1px -1px var(--logo-border-color), -1px 1px var(--logo-border-color);
 }
 
 .lives {
@@ -13,7 +15,9 @@
     position: absolute;
     left: 1rem;
     top: 1rem;
-    --logo-border-color: hsl(57, 0%, 25%); 
-    text-shadow: 2px 0 var(--logo-border-color), -2px 0 var(--logo-border-color), 0 2px var(--logo-border-color), 0 -2px var(--logo-border-color),
-               1px 1px var(--logo-border-color), -1px -1px var(--logo-border-color), 1px -1px var(--logo-border-color), -1px 1px var(--logo-border-color);
+    --logo-border-color: hsl(57, 0%, 25%);
+    text-shadow: 2px 0 var(--logo-border-color), -2px 0 var(--logo-border-color),
+        0 2px var(--logo-border-color), 0 -2px var(--logo-border-color),
+        1px 1px var(--logo-border-color), -1px -1px var(--logo-border-color),
+        1px -1px var(--logo-border-color), -1px 1px var(--logo-border-color);
 }
