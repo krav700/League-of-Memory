@@ -5,7 +5,7 @@ import { useState } from "react";
 
 let pickedCards = ["", ""];
 
-function ChampionImage({ champ, lives, cardSize }) {
+function ChampionImage({ champ, lives, cardSize, gamemodeSkins, skin }) {
     const [sizeClass, setSizeClass] = useState('easy');
 
     function lostGame() {
@@ -95,7 +95,6 @@ function ChampionImage({ champ, lives, cardSize }) {
             setSizeClass('hard');
         }
     }, [cardSize]);
-
     return (
         <div
             className={`card-container ${champ.name}  ${sizeClass}-card`}
@@ -103,7 +102,7 @@ function ChampionImage({ champ, lives, cardSize }) {
         >
             <img
                 className={'card-back'}
-                src={`https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champ.name}_0.jpg`}
+                src={`https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champ.name}_${gamemodeSkins ? skin : '0'}.jpg`}
             />
             <img className="card" src={cardBack} />
         </div>

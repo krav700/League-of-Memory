@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import ChampionImage from "./ChampionImage.jsx";
 
+const CHAMPION_COUNT = 172;
+
 async function getChampsJSON() {
     let champsNames;
     await fetch(
@@ -21,35 +23,12 @@ function getChampionNames(setNameArray) {
     return true;
 }
 
-function adjustCardSize(cardSize) {
-    const allCards = document.querySelectorAll(".card-container");
-    if (cardSize == 5) {
-        allCards.forEach((card) => {
-            card.classList.add("easy-card");
-            card.classList.remove("medium-card");
-            card.classList.remove("hard-card");
-        });
-    } else if (cardSize == 15) {
-        allCards.forEach((card) => {
-            card.classList.remove("easy-card");
-            card.classList.add("medium-card");
-            card.classList.remove("hard-card");
-        });
-    } else if (cardSize == 30) {
-        allCards.forEach((card) => {
-            card.classList.remove("easy-card");
-            card.classList.remove("medium-card");
-            card.classList.add("hard-card");
-        });
-    }
-}
-
 function fillArrayWithChamps(numOfCards, setCardArray, nameArray) {
     let champsSelected = [];
     for (let i = 0; i < numOfCards; i++) {
-        let randomChamp = Math.floor(Math.random() * 172);
+        let randomChamp = Math.floor(Math.random() * CHAMPION_COUNT);
         while (champsSelected.includes(randomChamp)) {
-            randomChamp = Math.floor(Math.random() * 172);
+            randomChamp = Math.floor(Math.random() * CHAMPION_COUNT);
         }
         champsSelected.push(randomChamp);
         setCardArray((prev) => [
@@ -88,9 +67,45 @@ function randomizeChampArray(cardArray, setCardArray) {
     }
 }
 
-function CardsContainer({ difficulty, lives, cardSize }) {
+async function getSkinOfChamp(champ, champsArray, skinsArray) {
+    if (!champsArray.includes(champ.name)) {
+        await fetch(
+            `https://ddragon.leagueoflegends.com/cdn/16.3.1/data/en_US/champion/${champ.name}.json`
+        )
+            .then((res) => res.json())
+            .then((data) => data.data)
+            .then((data) => {
+                let numArray = [];
+                for (let i = 0; i < data[champ.name].skins.length; i++) {
+                    numArray.push(data[champ.name].skins[i].num);
+                }
+                const skinNumber = Math.floor(
+                    Math.random() * (numArray.length - 1) + 1
+                );
+                const skin = numArray[skinNumber];
+                champ.skin = skin;
+                skinsArray.push(skin);
+                champsArray.push(champ.name);
+            });
+    } else {
+        const index = champsArray.indexOf(champ.name);
+        champ.skin = skinsArray[index];
+    }
+}
+
+async function setSkinsOnCardArray(cardArray, setCardArray) {
+    let champsArray = [];
+    let skinsArray = [];
+    let copyOfCardArray = cardArray;
+    for (let i = 0; i < copyOfCardArray.length; i++) {
+        await getSkinOfChamp(copyOfCardArray[i], champsArray, skinsArray);
+    }
+    setCardArray(copyOfCardArray);
+}
+
+function CardsContainer({ difficulty, lives, cardSize, gamemodeSkins }) {
     const [nameArray, setNameArray] = useState([]);
-    const [cardArray, setCardArray] = useState([{ id: 0, name: "" }]);
+    const [cardArray, setCardArray] = useState([{ id: 0, name: "", skin: 0 }]);
 
     let firstRun = true;
     useEffect(() => {
@@ -105,11 +120,19 @@ function CardsContainer({ difficulty, lives, cardSize }) {
 
     useEffect(() => {
         fillArrayWithChamps(difficulty, setCardArray, nameArray);
-
         return () => {
             setCardArray([]);
         };
     }, [nameArray, difficulty]);
+
+    useEffect(() => {
+        if (
+            cardArray[cardArray.length - 1].name != undefined &&
+            cardArray[cardArray.length - 1].name != ""
+        ) {
+            setSkinsOnCardArray(cardArray, setCardArray);
+        }
+    }, [cardArray]);
 
     return (
         <div className="cards-container">
@@ -123,6 +146,8 @@ function CardsContainer({ difficulty, lives, cardSize }) {
                                 champ={card}
                                 lives={lives}
                                 key={card.id}
+                                gamemodeSkins={gamemodeSkins}
+                                skin={card.skin}
                             />
                         );
                     })}
