@@ -5,7 +5,7 @@
     align-items: center;
 }
 
-.difficulty-button {
+button {
     position: relative;
     color: hsl(57, 50%, 50%);
     font-weight: bolder;
@@ -16,7 +16,7 @@
     box-shadow: inset 0px 0px 5px black;
 }
 
-.difficulty-button:hover::before {
+button:hover::before {
     opacity: 1;
     color: rgb(40, 79, 78);
     display: flex;
@@ -25,7 +25,7 @@
     content: attr(data-text);
 }
 
-.difficulty-button::before {
+button::before {
     position: absolute;
     content: "";
     width: 110%;
@@ -38,7 +38,7 @@
     transition: opacity 750ms ease;
 }
 
-.difficulty-button::after {
+button::after {
     position: absolute;
     content: "";
     width: 110%;
@@ -50,5 +50,17 @@
     z-index: -1;
     transition: all 500ms ease;
     box-shadow: 0px 0px 50px rgb(40, 79, 78);
-    /* inset 0px 0px 5px black; */
+}
+
+button:focus::before {
+    background: linear-gradient(hsl(57, 50%, 50%), hsl(57, 25%, 25%));
+}
+
+button.disabled {
+    background: linear-gradient(hsl(178, 30%, 20%), hsl(178, 30%, 25%));
+    pointer-events: none;
+}
+
+button.disabled::after {
+    background: linear-gradient(hsl(57, 100%, 25%), hsl(57, 25%, 25%));
 }

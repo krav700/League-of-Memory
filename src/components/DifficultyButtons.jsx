@@ -13,34 +13,44 @@ function DifficultyButtons({
         <>
             <div className="difficulty-container">
                 <button
-                    className="difficulty-button"
-                    onClick={() => {
+                    onClick={(e) => {
                         setDifficulty(easy);
-                        lives.current = 5;
+                        lives.current = easy;
                         setCardSize(5);
+                        e.target.classList.add("disabled");
+                        e.target.parentElement.children[1].classList.remove("disabled");
+                        e.target.parentElement.lastChild.classList.remove("disabled");
+
                     }}
+                    className={"easy-button disabled"}
                     data-text={"Easy"}
                 >
                     Easy
                 </button>
                 <button
-                    className="difficulty-button"
-                    onClick={() => {
+                    onClick={(e) => {
                         setDifficulty(medium);
-                        lives.current = 15;
+                        lives.current = medium;
                         setCardSize(15);
+                        e.target.classList.add("disabled");
+                        e.target.parentElement.firstChild.classList.remove("disabled");
+                        e.target.parentElement.lastChild.classList.remove("disabled");
                     }}
+                    className={"medium-button"}
                     data-text={"Medium"}
                 >
                     Medium
                 </button>
                 <button
-                    className="difficulty-button"
-                    onClick={() => {
+                    onClick={(e) => {
                         setDifficulty(hard);
-                        lives.current = 30;
+                        lives.current = hard;
                         setCardSize(30);
+                        e.target.classList.add("disabled");
+                        e.target.parentElement.firstChild.classList.remove("disabled");
+                        e.target.parentElement.children[1].classList.remove("disabled");
                     }}
+                    className={"hard-button"}
                     data-text={"Hard"}
                 >
                     Hard
