@@ -2,8 +2,64 @@ import { useEffect } from "react";
 import cardBack from "../assets/Your_Shop_Banner.webp";
 import "../styles/ChampionImage.css";
 import { useState } from "react";
+import confetti from "canvas-confetti";
 
 let pickedCards = ["", ""];
+
+async function winAnimation() {
+    const end = Date.now() + (1 * 1000);
+    const colors = ['rgb(255, 255, 255)', 'hsl(178, 30%, 50%)'];
+
+    (function frame() {
+    confetti({
+        particleCount: 4,
+        angle: 60,
+        spread: 55,
+        origin: { x: 0 },
+        colors: colors
+    });
+    confetti({
+        particleCount: 4,
+        angle: 120,
+        spread: 55,
+        origin: { x: 1 },
+        colors: colors
+    });
+
+    if (Date.now() < end) {
+        requestAnimationFrame(frame);
+    }
+    }());
+}
+
+async function looseAnimation() {
+    const scalar = 2;
+    const unicorn = confetti.shapeFromText({ text: '😭', scalar });
+    const end = Date.now() + (1 * 1000);
+
+    (function frame() {
+    confetti({
+        particleCount: 1,
+        angle: 60,
+        spread: 55,
+        origin: { x: 0 },
+        shapes: [unicorn],
+        scalar
+    });
+    confetti({
+        particleCount: 1,
+        angle: 120,
+        spread: 55,
+        origin: { x: 1 },
+        shapes: [unicorn],
+        scalar
+    });
+
+    if (Date.now() < end) {
+        requestAnimationFrame(frame);
+    }
+    }());
+}
 
 function ChampionImage({
     champ,
@@ -35,9 +91,10 @@ function ChampionImage({
             allCards.forEach((card) => {
                 card.classList.add("rotate");
             });
+            looseAnimation();
         }
     }
-
+    
     function winGame() {
         const allCards = document.querySelectorAll(".card-container");
         let win = true;
@@ -50,6 +107,7 @@ function ChampionImage({
             allCards.forEach((card) => {
                 card.classList.add("correct-guess");
             });
+            winAnimation();
         }
     }
 
