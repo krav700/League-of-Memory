@@ -5,9 +5,10 @@ import DifficultyButtons from "./DifficultyButtons.jsx";
 import GameModeButtons from "./GameModeButtons.jsx";
 
 function App() {
-    const [difficulty, setDifficulty] = useState(5);
-    const [cardSize, setCardSize] = useState(5);
-    const [gamemodeSkins, setGamemodeSkins] = useState(false);
+    let saveGameMode = (localStorage.getItem("gamemodeSkins") == "true" ? true : false);
+    const [difficulty, setDifficulty] = useState(localStorage.getItem("difficulty")?? 5);
+    const [cardSize, setCardSize] = useState(localStorage.getItem("difficulty")?? 5);
+    const [gamemodeSkins, setGamemodeSkins] = useState(saveGameMode?? false);
     let lives = useRef(5);
     return (
         <>

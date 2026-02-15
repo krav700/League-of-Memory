@@ -103,15 +103,16 @@ function ChampionImage({
     useEffect(() => {
         if (cardSize == 5) {
             setSizeClass("easy");
-        } else if (cardSize == 15) {
+        } else if (cardSize == 10) {
             setSizeClass("medium");
-        } else if (cardSize == 30) {
+        } else if (cardSize == 15) {
             setSizeClass("hard");
         }
     }, [cardSize]);
+
     return (
         <div
-            className={`card-container ${champ.name}  ${sizeClass}-card`}
+                        className={`card-container ${champ.name}  ${sizeClass}-card`}
             onClick={(e) => handleClick(e)}
             draggable={false}
         >
