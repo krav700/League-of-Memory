@@ -11,7 +11,7 @@ function App() {
     let lives = useRef(5);
     return (
         <>
-            <GameModeButtons setGamemodeSkins={setGamemodeSkins}/>
+            <GameModeButtons setGamemodeSkins={setGamemodeSkins} />
             <DifficultyButtons
                 difficulty={difficulty}
                 setDifficulty={setDifficulty}

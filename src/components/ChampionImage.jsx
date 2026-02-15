@@ -1,25 +1,38 @@
 import { useEffect } from "react";
 import cardBack from "../assets/Your_Shop_Banner.webp";
-import '../styles/ChampionImage.css';
+import "../styles/ChampionImage.css";
 import { useState } from "react";
 
 let pickedCards = ["", ""];
 
-function ChampionImage({ champ, lives, cardSize, gamemodeSkins, skin }) {
-    const [sizeClass, setSizeClass] = useState('easy');
+function ChampionImage({
+    champ,
+    lives,
+    cardSize,
+    gamemodeSkins,
+    difficulty,
+}) {
+    const [sizeClass, setSizeClass] = useState("easy");
+    const [render, forceRender] = useState(0);
+
+    useEffect(() => {
+        setTimeout(() => {
+            forceRender((prev) => prev + 1);
+        }, 100);
+    }, [difficulty]);
 
     function lostGame() {
         if (lives.current == 0) {
             const allCards = document.querySelectorAll(".card-container");
-            allCards.forEach(card => {
+            allCards.forEach((card) => {
                 if (card.classList.contains("rotate")) {
                     card.classList.add("correct-guess");
                 } else {
                     card.classList.add("wrong-guess");
                 }
             });
-            allCards.forEach(card => {
-                card.classList.add("rotate")
+            allCards.forEach((card) => {
+                card.classList.add("rotate");
             });
         }
     }
@@ -27,13 +40,13 @@ function ChampionImage({ champ, lives, cardSize, gamemodeSkins, skin }) {
     function winGame() {
         const allCards = document.querySelectorAll(".card-container");
         let win = true;
-        allCards.forEach(card => {
+        allCards.forEach((card) => {
             if (!card.classList.contains("rotate")) {
                 win = false;
             }
         });
         if (win) {
-            allCards.forEach(card => {
+            allCards.forEach((card) => {
                 card.classList.add("correct-guess");
             });
         }
@@ -88,11 +101,11 @@ function ChampionImage({ champ, lives, cardSize, gamemodeSkins, skin }) {
 
     useEffect(() => {
         if (cardSize == 5) {
-            setSizeClass('easy');
+            setSizeClass("easy");
         } else if (cardSize == 15) {
-            setSizeClass('medium');
+            setSizeClass("medium");
         } else if (cardSize == 30) {
-            setSizeClass('hard');
+            setSizeClass("hard");
         }
     }, [cardSize]);
     return (
@@ -101,8 +114,10 @@ function ChampionImage({ champ, lives, cardSize, gamemodeSkins, skin }) {
             onClick={(e) => handleClick(e)}
         >
             <img
-                className={'card-back'}
-                src={`https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champ.name}_${gamemodeSkins ? skin : '0'}.jpg`}
+                className={"card-back"}
+                src={`https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${
+                    champ.name
+                }_${gamemodeSkins ? champ.skin ?? "0" : "0"}.jpg`}
             />
             <img className="card" src={cardBack} />
         </div>

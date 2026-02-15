@@ -33,7 +33,7 @@ function fillArrayWithChamps(numOfCards, setCardArray, nameArray) {
         champsSelected.push(randomChamp);
         setCardArray((prev) => [
             ...prev,
-            { id: prev.length, name: nameArray[randomChamp] },
+            { id: prev.length, name: nameArray[randomChamp], skin: 0 },
         ]);
     }
     setCardArray((prev) => [
@@ -147,7 +147,7 @@ function CardsContainer({ difficulty, lives, cardSize, gamemodeSkins }) {
                                 lives={lives}
                                 key={card.id}
                                 gamemodeSkins={gamemodeSkins}
-                                skin={card.skin}
+                                difficulty={difficulty}
                             />
                         );
                     })}

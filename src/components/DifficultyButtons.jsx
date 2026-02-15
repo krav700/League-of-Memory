@@ -20,7 +20,6 @@ function DifficultyButtons({
                         e.target.classList.add("disabled");
                         e.target.parentElement.children[1].classList.remove("disabled");
                         e.target.parentElement.lastChild.classList.remove("disabled");
-
                     }}
                     className={"easy-button disabled"}
                     data-text={"Easy"}
