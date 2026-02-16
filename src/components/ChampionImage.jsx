@@ -201,6 +201,10 @@ function ChampionImage({
         } else if (cardSize == 15) {
             setSizeClass("hard");
         }
+        const allCards = document.querySelectorAll(".card-container");
+        allCards.forEach((card) => {
+            card.style.pointerEvents = "auto";
+        });
     }, [cardSize]);
 
     return (
