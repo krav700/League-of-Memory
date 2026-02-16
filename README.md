@@ -1,16 +1,13 @@
-# React + Vite
+# League of Memory
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+League of Memory is a [Memory Card Game](https://en.wikipedia.org/wiki/Concentration_(card_game)) in which you can choose from 3 difficulties and choose whether the characters on the cards have a different look or not. Each difficulty has a set number of lives, and each win is counted on the scoreboard based on the difficulty. All IPs, characters, skins, and APIs used are from the popular online game [League of Legends](https://www.leagueoflegends.com/en-gb/).  
 
-Currently, two official plugins are available:
+Made for fun and to practice React hooks such as useState() and useEffect().
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### [Try it out!]()
 
-## React Compiler
+![Screenshot](./public/readme_screenshot.png)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+All character splash arts are from [League Data Dragon.](https://developer.riotgames.com/docs/lol#data-dragon)  
+Back of the cards from [League of Legends fandom.](https://leagueoflegends.fandom.com/wiki/Your_Shop)  
+Favicon from [favicon.io.](https://favicon.io/favicon-generator/)  
