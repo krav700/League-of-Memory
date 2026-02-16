@@ -7,7 +7,6 @@ function DifficultyButtons({
     easy,
     medium,
     hard,
-    lives,
     setLives,
 }) {
     const resetGameBtn = document.querySelector(".reset-game-btn");
