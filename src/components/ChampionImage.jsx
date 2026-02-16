@@ -148,6 +148,9 @@ function ChampionImage({
 
     function handleClick(e) {
         e.target.parentElement.style.pointerEvents = "none";
+        if (e.target.parentElement.classList.contains("cards-container")) {
+            return;
+        }
         e.target.parentElement.classList.add("rotate");
 
         pickedCards[1] = champ.name;
