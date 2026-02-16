@@ -97,7 +97,6 @@ img {
 }
 
 @media (max-width: 2600px) {
-
     h1 {
         font-size: 5rem;
     }
@@ -110,12 +109,12 @@ img {
         width: 270px;
         height: 400px;
     }
-    
+
     .medium-card {
         width: 180px;
         height: 290px;
     }
-    
+
     .hard-card {
         width: 135px;
         height: 240px;
@@ -123,25 +122,16 @@ img {
 }
 
 @media (max-width: 2500px) {
-
-    h1 {
-        font-size: 5rem;
-    }
-
-    button {
-        font-size: 1.5rem !important;
-    }
-
     .easy-card {
         width: 250px;
         height: 380px;
     }
-    
+
     .medium-card {
         width: 170px;
         height: 280px;
     }
-    
+
     .hard-card {
         width: 115px;
         height: 220px;
@@ -149,65 +139,32 @@ img {
 }
 
 @media (max-width: 2200px) {
-
-    h1 {
-        font-size: 5rem;
-    }
-
-    button {
-        font-size: 1.5rem !important;
-    }
-
     .easy-card {
         width: 230px;
         height: 350px;
     }
-    
+
     .medium-card {
         width: 150px;
         height: 260px;
     }
-    
-    .hard-card {
-        width: 115px;
-        height: 220px;
-    }
 }
 
 @media (max-width: 2025px) {
-
-    h1 {
-        font-size: 5rem;
-    }
-
-    button {
-        font-size: 1.5rem !important;
-    }
-
     .easy-card {
         width: 190px;
         height: 320px;
     }
-    
+
     .medium-card {
         width: 140px;
         height: 250px;
     }
-    
-    .hard-card {
-        width: 115px;
-        height: 220px;
-    }
 }
 
 @media (max-width: 1800px) {
-
     .cards-container {
         width: 80vw;
-    }
-
-    h1 {
-        font-size: 5rem;
     }
 
     button {
@@ -218,12 +175,12 @@ img {
         width: 170px;
         height: 300px;
     }
-    
+
     .medium-card {
         width: 120px;
         height: 220px;
     }
-    
+
     .hard-card {
         width: 105px;
         height: 190px;
@@ -247,12 +204,12 @@ img {
         width: 150px;
         height: 250px;
     }
-    
+
     .medium-card {
         width: 85px;
         height: 175px;
     }
-    
+
     .hard-card {
         width: 75px;
         height: 135px;
@@ -260,14 +217,6 @@ img {
 }
 
 @media (max-width: 1220px) {
-    .cards-container {
-        width: 80vw;
-    }
-
-    h1 {
-        font-size: 4rem;
-    }
-
     h2 {
         font-size: 1.25rem;
     }
@@ -280,12 +229,12 @@ img {
         width: 110px;
         height: 200px;
     }
-    
+
     .medium-card {
         width: 100px;
         height: 160px;
     }
-    
+
     .hard-card {
         width: 75px;
         height: 125px;
@@ -301,10 +250,9 @@ img {
         width: 90px;
         height: 150px;
     }
- }
+}
 
 @media (max-width: 900px) {
-
     .cards-container {
         width: 90vw;
     }
@@ -326,12 +274,12 @@ img {
         width: 110px;
         height: 210px;
     }
-    
+
     .medium-card {
         width: 85px;
         height: 175px;
     }
-    
+
     .hard-card {
         width: 70px;
         height: 125px;
@@ -339,13 +287,8 @@ img {
 }
 
 @media (max-width: 500px) {
-
     #root {
         gap: 1.3rem;
-    }
-
-    .cards-container {
-        width: 90vw;
     }
 
     h1 {
@@ -366,7 +309,6 @@ img {
     }
 
     button {
-        padding: 0.6rem 1rem;
         font-size: 0.8rem !important;
     }
 
@@ -378,12 +320,12 @@ img {
         width: 75px;
         height: 155px;
     }
-    
+
     .medium-card {
         width: 60px;
         height: 120px;
     }
-    
+
     .hard-card {
         width: 50px;
         height: 100px;
@@ -391,13 +333,13 @@ img {
 }
 
 @media (max-width: 400px) {
-
     #root {
         gap: 1.1rem;
     }
 
     .cards-container {
         width: 95vw;
+        gap: 0.8rem;
     }
 
     .card-container:hover {
@@ -416,7 +358,7 @@ img {
         top: 0.5rem !important;
         left: 0.5rem !important;
     }
-    
+
     .lives > h2 {
         font-size: 0.7rem !important;
     }
@@ -427,24 +369,19 @@ img {
     }
 
     button {
-        padding: 0.6rem 1rem;
         font-size: 0.7rem !important;
-    }
-
-    .cards-container {
-        gap: 0.8rem;
     }
 
     .easy-card {
         width: 70px;
         height: 150px;
     }
-    
+
     .medium-card {
         width: 55px;
         height: 110px;
     }
-    
+
     .hard-card {
         width: 45px;
         height: 100px;
@@ -452,7 +389,6 @@ img {
 }
 
 @media (max-width: 350px) {
-
     #root {
         gap: 0.9rem;
     }
@@ -473,22 +409,7 @@ img {
         font-size: 0.5rem;
     }
 
-    .lives {
-        top: 0.5rem !important;
-        left: 0.5rem !important;
-    }
-    
-    .lives > h2 {
-        font-size: 0.7rem !important;
-    }
-
-    .scores {
-        top: 0.5rem !important;
-        right: 0.25rem !important;
-    }
-
     button {
-        padding: 0.6rem 1rem;
         font-size: 0.6rem !important;
     }
 
@@ -500,12 +421,12 @@ img {
         width: 70px;
         height: 150px;
     }
-    
+
     .medium-card {
         width: 55px;
         height: 110px;
     }
-    
+
     .hard-card {
         width: 50px;
         height: 90px;
