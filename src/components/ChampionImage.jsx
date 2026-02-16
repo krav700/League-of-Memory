@@ -8,7 +8,7 @@ let pickedCards = ["", ""];
 
 async function winAnimation() {
     const end = Date.now() + 1 * 1000;
-    const colors = ["rgb(255, 255, 255)", "hsl(178, 30%, 50%)"];
+    const colors = ["hsl(0, 100%, 50%)", "hsl(178, 30%, 50%)"];
 
     (function frame() {
         confetti({
@@ -36,6 +36,7 @@ async function looseAnimation() {
     const scalar = 2;
     const unicorn = confetti.shapeFromText({ text: "😭", scalar });
     const end = Date.now() + 1 * 1000;
+    const colors = ["rgb(0, 0, 0)"];
 
     (function frame() {
         confetti({
@@ -47,12 +48,26 @@ async function looseAnimation() {
             scalar,
         });
         confetti({
+            particleCount: 4,
+            angle: 60,
+            spread: 55,
+            origin: { x: 0 },
+            colors: colors,
+        });
+        confetti({
             particleCount: 1,
             angle: 120,
             spread: 55,
             origin: { x: 1 },
             shapes: [unicorn],
             scalar,
+        });
+        confetti({
+            particleCount: 4,
+            angle: 120,
+            spread: 55,
+            origin: { x: 1 },
+            colors: colors,
         });
 
         if (Date.now() < end) {
