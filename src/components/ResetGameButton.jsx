@@ -27,7 +27,13 @@ function ResetGameButton({
     }
 
     return (
-        <button className="reset-game-btn" onClick={(e) => {resetGameFunk(e)}} data-text={"New Game"}>
+        <button
+            className="reset-game-btn"
+            onClick={(e) => {
+                resetGameFunk(e);
+            }}
+            data-text={"New Game"}
+        >
             New Game
         </button>
     );
