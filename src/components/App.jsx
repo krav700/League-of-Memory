@@ -27,6 +27,7 @@ function App() {
     const [hardWins, setHardWins] = useState(
         Number(localStorage.getItem("hardWins")) ?? 0
     );
+    const [resetGame, setResetGame] = useState(false);
     return (
         <>
             <Lives lives={lives} />
@@ -48,8 +49,12 @@ function App() {
                 setLives={setLives}
             />
             <CardsContainer
+                resetGame={resetGame}
+                setResetGame={setResetGame}
                 cardSize={cardSize}
+                setCardSize={setCardSize}
                 difficulty={difficulty}
+                setDifficulty={setDifficulty}
                 lives={lives}
                 setLives={setLives}
                 gamemodeSkins={gamemodeSkins}

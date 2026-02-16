@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import "../styles/DifficultyButtons.css";
+import "../styles/Buttons.css";
 
 function DifficultyButtons({
     setCardSize,
@@ -36,7 +36,6 @@ function DifficultyButtons({
                 <button
                     onClick={(e) => {
                         setDifficulty(easy);
-                        // lives.current = easy;
                         setLives(easy);
                         setCardSize(5);
                         e.target.classList.add("disabled");
@@ -56,7 +55,6 @@ function DifficultyButtons({
                 <button
                     onClick={(e) => {
                         setDifficulty(medium);
-                        // lives.current = medium;
                         setLives(medium);
                         setCardSize(10);
                         e.target.classList.add("disabled");
@@ -76,7 +74,6 @@ function DifficultyButtons({
                 <button
                     onClick={(e) => {
                         setDifficulty(hard);
-                        // lives.current = hard;
                         setLives(hard);
                         setCardSize(15);
                         e.target.classList.add("disabled");

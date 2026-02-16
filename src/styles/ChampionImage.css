@@ -11,6 +11,12 @@ img {
     align-items: center;
     gap: 1rem;
     flex-wrap: wrap;
+    position: relative;
+    z-index: -3;
+}
+
+.reset-game-btn {
+    position: absolute;
 }
 
 .card-container {
@@ -24,6 +30,7 @@ img {
     border-block: 5px solid black;
     border-inline: 2px solid black;
     background: black;
+    z-index: -2;
 }
 
 .card-container::after {
@@ -93,7 +100,7 @@ img {
 }
 
 .card-container:hover {
-    transform: translateY(-1rem);
+    transform: translateY(-0.9rem);
 }
 
 @media (max-width: 2600px) {

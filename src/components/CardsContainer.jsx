@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import ChampionImage from "./ChampionImage.jsx";
+import ResetGameButton from "./ResetGameButton.jsx";
 
 const CHAMPION_COUNT = 172;
 
@@ -103,10 +104,14 @@ async function setSkinsOnCardArray(
 }
 
 function CardsContainer({
+    resetGame,
+    setResetGame,
     difficulty,
+    setDifficulty,
     lives,
     setLives,
     cardSize,
+    setCardSize,
     gamemodeSkins,
     easyWins,
     mediumWins,
@@ -137,7 +142,7 @@ function CardsContainer({
         return () => {
             setCardArray([]);
         };
-    }, [nameArray, difficulty]);
+    }, [nameArray, difficulty, resetGame]);
 
     useEffect(() => {
         if (
@@ -150,6 +155,14 @@ function CardsContainer({
 
     return (
         <div className="cards-container">
+            <ResetGameButton
+                resetGame={resetGame}
+                setDifficulty={setDifficulty}
+                difficulty={difficulty}
+                setLives={setLives}
+                setCardSize={setCardSize}
+                setResetGame={setResetGame}
+            />
             {cardArray.length > 0 ? (
                 <>
                     {cardArray.map((card) => {

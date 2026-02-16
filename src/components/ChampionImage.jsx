@@ -93,6 +93,7 @@ function ChampionImage({
 }) {
     const [sizeClass, setSizeClass] = useState("easy");
     const [, forceRender] = useState(0);
+    const resetBtn = document.querySelector(".reset-game-btn");
 
     useEffect(() => {
         setTimeout(() => {
@@ -114,6 +115,7 @@ function ChampionImage({
                 card.classList.add("rotate");
             });
             looseAnimation();
+            resetBtn.classList.add("appear");
         }
     }
 
@@ -130,6 +132,7 @@ function ChampionImage({
                 card.classList.add("correct-guess");
             });
             winAnimation();
+            resetBtn.classList.add("appear");
             if (difficulty == 5) {
                 setEasyWins((prev) => prev + 1);
                 localStorage.setItem("easyWins", easyWins + 1);

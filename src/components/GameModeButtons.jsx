@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import "../styles/DifficultyButtons.css";
+import "../styles/Buttons.css";
 
 function GameModeButtons({ setGamemodeSkins }) {
 
