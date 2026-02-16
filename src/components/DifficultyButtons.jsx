@@ -10,6 +10,7 @@ function DifficultyButtons({
     lives,
     setLives,
 }) {
+    const resetGameBtn = document.querySelector(".reset-game-btn");
     let onLoadDifficulty = true;
     useEffect(() => {
         let button;
@@ -46,6 +47,7 @@ function DifficultyButtons({
                             "disabled"
                         );
                         localStorage.setItem("difficulty", 5);
+                        resetGameBtn.classList.remove("appear");
                     }}
                     className={`easy-button disabled`}
                     data-text={"Easy"}
@@ -65,6 +67,7 @@ function DifficultyButtons({
                             "disabled"
                         );
                         localStorage.setItem("difficulty", 10);
+                        resetGameBtn.classList.remove("appear");
                     }}
                     className={"medium-button"}
                     data-text={"Medium"}
@@ -84,6 +87,7 @@ function DifficultyButtons({
                             "disabled"
                         );
                         localStorage.setItem("difficulty", 15);
+                        resetGameBtn.classList.remove("appear");
                     }}
                     className={"hard-button"}
                     data-text={"Hard"}
