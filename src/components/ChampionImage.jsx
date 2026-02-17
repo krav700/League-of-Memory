@@ -96,9 +96,18 @@ function ChampionImage({
     const resetBtn = document.querySelector(".reset-game-btn");
 
     useEffect(() => {
-        setTimeout(() => {
-            forceRender((prev) => prev + 1);
-        }, 500);
+        if (
+            (gamemodeSkins == true && champ.skin == undefined) ||
+            champ.skin == 0
+        ) {
+            setTimeout(() => {
+                forceRender((prev) => prev + 1);
+            }, 500);
+        } else {
+            setTimeout(() => {
+                forceRender((prev) => prev + 1);
+            }, 50);
+        }
     }, [difficulty, doneRenderingSkins]);
 
     function lostGame() {
@@ -219,8 +228,11 @@ function ChampionImage({
             <img
                 className={"card-back"}
                 src={`https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${
-                    champ.name
-                }_${gamemodeSkins ? champ.skin ?? "0" : "0"}.jpg`}
+                    champ.name == "Fiddlesticks" ? "FiddleSticks" : champ.name
+                }_${gamemodeSkins ? champ.skin ?? 0 : 0}.jpg`}
+                onError={(e) => {
+                    e.target.src = `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champ.name}_0.jpg`;
+                }}
                 draggable={false}
             />
             <img className="card" src={cardBack} draggable={false} />
