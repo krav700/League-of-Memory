@@ -4,7 +4,7 @@ League of Memory is a [Memory Card Game](https://en.wikipedia.org/wiki/Concentra
 
 Made for fun and to practice React hooks such as useState() and useEffect().
 
-### [Try it out!]()
+### [Try it out!](https://league-of-memory.pages.dev)
 
 ![Screenshot](./public/readme_screenshot.png)
 
