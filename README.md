@@ -11,3 +11,4 @@ Made for fun and to practice React hooks such as useState() and useEffect().
 All character splash arts are from [League Data Dragon.](https://developer.riotgames.com/docs/lol#data-dragon)  
 Back of the cards from [League of Legends fandom.](https://leagueoflegends.fandom.com/wiki/Your_Shop)  
 Favicon from [favicon.io.](https://favicon.io/favicon-generator/)  
+Deployed using [Cloudflare Pages](https://pages.cloudflare.com).
