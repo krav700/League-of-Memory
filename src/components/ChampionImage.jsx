@@ -96,6 +96,7 @@ function ChampionImage({
     const resetBtn = document.querySelector(".reset-game-btn");
 
     useEffect(() => {
+        document.querySelector(".reset-game-btn").classList.remove("appear");;
         if (
             (gamemodeSkins == true && champ.skin == undefined) ||
             champ.skin == 0
