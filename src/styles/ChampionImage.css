@@ -20,7 +20,7 @@ img {
 }
 
 .card-container {
-    transition: all 500ms;
+    transition: transform 500ms;
     position: relative;
     width: 150px;
     height: 250px;
