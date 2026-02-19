@@ -145,13 +145,10 @@ function ChampionImage({
             resetBtn.classList.add("appear");
             if (difficulty == 5) {
                 setEasyWins((prev) => prev + 1);
-                localStorage.setItem("easyWins", easyWins + 1);
             } else if (difficulty == 10) {
                 setMediumWins((prev) => prev + 1);
-                localStorage.setItem("mediumWins", mediumWins + 1);
             } else if (difficulty == 15) {
                 setHardWins((prev) => prev + 1);
-                localStorage.setItem("hardWins", hardWins + 1);
             }
         }
     }
