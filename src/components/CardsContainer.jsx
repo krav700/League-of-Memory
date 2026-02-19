@@ -113,9 +113,6 @@ function CardsContainer({
     cardSize,
     setCardSize,
     gamemodeSkins,
-    easyWins,
-    mediumWins,
-    hardWins,
     setEasyWins,
     setMediumWins,
     setHardWins,
@@ -176,9 +173,6 @@ function CardsContainer({
                                 gamemodeSkins={gamemodeSkins}
                                 difficulty={difficulty}
                                 doneRenderingSkins={doneRenderingSkins}
-                                easyWins={easyWins}
-                                mediumWins={mediumWins}
-                                hardWins={hardWins}
                                 setEasyWins={setEasyWins}
                                 setMediumWins={setMediumWins}
                                 setHardWins={setHardWins}

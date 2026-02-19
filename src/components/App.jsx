@@ -58,9 +58,6 @@ function App() {
                 lives={lives}
                 setLives={setLives}
                 gamemodeSkins={gamemodeSkins}
-                easyWins={easyWins}
-                mediumWins={easyWins}
-                hardWins={easyWins}
                 setEasyWins={setEasyWins}
                 setMediumWins={setMediumWins}
                 setHardWins={setHardWins}
