@@ -73,6 +73,7 @@ button.disabled::after {
 .appear {
     opacity: 1;
     display: block;
+    pointer-events: auto;
 }
 
 .reset-game-btn::after {
