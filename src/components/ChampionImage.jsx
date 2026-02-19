@@ -84,9 +84,6 @@ function ChampionImage({
     gamemodeSkins,
     difficulty,
     doneRenderingSkins,
-    easyWins,
-    mediumWins,
-    hardWins,
     setEasyWins,
     setMediumWins,
     setHardWins,
@@ -97,16 +94,23 @@ function ChampionImage({
 
     useEffect(() => {
         document.querySelector(".reset-game-btn").classList.remove("appear");;
+        const cardContainer = document.querySelectorAll(".card");
         if (
             (gamemodeSkins == true && champ.skin == undefined) ||
             champ.skin == 0
         ) {
             setTimeout(() => {
                 forceRender((prev) => prev + 1);
+                cardContainer.forEach(card => {
+                    card.style.transition = "transform 0.6s";
+                });
             }, 500);
         } else {
             setTimeout(() => {
                 forceRender((prev) => prev + 1);
+                cardContainer.forEach(card => {
+                    card.style.transition = "transform 0.6s";
+                });
             }, 50);
         }
     }, [difficulty, doneRenderingSkins]);
@@ -126,6 +130,10 @@ function ChampionImage({
             });
             looseAnimation();
             resetBtn.classList.add("appear");
+            const cardContainer = document.querySelectorAll(".card");
+            cardContainer.forEach(card => {
+                card.style.transition = "transform 0s";
+            });
         }
     }
 
@@ -150,6 +158,10 @@ function ChampionImage({
             } else if (difficulty == 15) {
                 setHardWins((prev) => prev + 1);
             }
+            const cardContainer = document.querySelectorAll(".card");
+            cardContainer.forEach(card => {
+                card.style.transition = "transform 0s";
+            });
         }
     }
 
