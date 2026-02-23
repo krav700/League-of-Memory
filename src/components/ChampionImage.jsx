@@ -6,17 +6,43 @@ import confetti from "canvas-confetti";
 
 let pickedCards = ["", ""];
 
-async function winAnimation() {
+async function winAnimation(difficulty) {
     const end = Date.now() + 1 * 1000;
     const colors = ["hsl(0, 100%, 50%)", "hsl(178, 30%, 50%)"];
+    let emoji;
+    const scalar = 2;
+    if (difficulty == 5) {
+        emoji = confetti.shapeFromText({ text: "🪙", scalar });
+    } else if (difficulty == 10) {
+        emoji = confetti.shapeFromText({ text: "⭐️", scalar });
+    } else {
+        emoji = confetti.shapeFromText({ text: "💎", scalar });
+    }
+    const cryingFace = confetti.shapeFromText({ text: "😭", scalar });
 
     (function frame() {
+        confetti({
+            particleCount: 1,
+            angle: 60,
+            spread: 55,
+            origin: { x: 0 },
+            shapes: [emoji],
+            scalar,
+        });
         confetti({
             particleCount: 4,
             angle: 60,
             spread: 55,
             origin: { x: 0 },
             colors: colors,
+        });
+        confetti({
+            particleCount: 1,
+            angle: 120,
+            spread: 55,
+            origin: { x: 1 },
+            shapes: [emoji],
+            scalar,
         });
         confetti({
             particleCount: 4,
@@ -34,7 +60,7 @@ async function winAnimation() {
 
 async function looseAnimation() {
     const scalar = 2;
-    const unicorn = confetti.shapeFromText({ text: "😭", scalar });
+    const cryingFace = confetti.shapeFromText({ text: "😭", scalar });
     const end = Date.now() + 1 * 1000;
     const colors = ["rgb(0, 0, 0)"];
 
@@ -44,7 +70,7 @@ async function looseAnimation() {
             angle: 60,
             spread: 55,
             origin: { x: 0 },
-            shapes: [unicorn],
+            shapes: [cryingFace],
             scalar,
         });
         confetti({
@@ -59,7 +85,7 @@ async function looseAnimation() {
             angle: 120,
             spread: 55,
             origin: { x: 1 },
-            shapes: [unicorn],
+            shapes: [cryingFace],
             scalar,
         });
         confetti({
@@ -192,7 +218,7 @@ function ChampionImage({
             allCards.forEach((card) => {
                 card.classList.add("correct-guess");
             });
-            winAnimation();
+            winAnimation(difficulty);
             resetBtn.classList.add("appear");
             if (difficulty == 5) {
                 setEasyWins((prev) => prev + 1);
