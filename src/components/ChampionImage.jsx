@@ -76,6 +76,42 @@ async function looseAnimation() {
     })();
 }
 
+function cardsShuffleAnimation() {
+    const cardsContainer = document.querySelector(".cards-container");
+    const cards = document.querySelectorAll(".card-container");
+
+    const containerRect = cardsContainer.getBoundingClientRect();
+    const centerX = containerRect.width / 2;
+    const centerY = containerRect.height / 2;
+
+    cards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+
+        const cardCenterX = rect.left + rect.width / 2;
+        const cardCenterY = rect.top + rect.height / 2;
+
+        const dx = centerX - (cardCenterX - containerRect.left);
+        const dy = centerY - (cardCenterY - containerRect.top);
+
+        card.style.transform = `translate(${dx}px, ${dy}px)`;
+        card.style.pointerEvents = 'none';
+    });
+}
+
+function unShuffleAnimation() {
+    const cardsContainer = document.querySelector(".cards-container");
+    cardsContainer.style.gap = "1rem";
+
+    const cards = document.querySelectorAll(".card-container");
+    cards.forEach(card => {
+        card.style.left = "0";
+        card.style.top = "0";
+        card.style.transform = "translate(0, 0)";
+        card.style.pointerEvents = 'auto';
+    });
+}
+
+
 function ChampionImage({
     champ,
     lives,
@@ -104,7 +140,8 @@ function ChampionImage({
                 cardContainer.forEach(card => {
                     card.style.transition = "transform 0.6s";
                 });
-            }, 500);
+            }, 1000);
+
         } else {
             setTimeout(() => {
                 forceRender((prev) => prev + 1);
@@ -113,6 +150,12 @@ function ChampionImage({
                 });
             }, 50);
         }
+        setTimeout(() => {
+            cardsShuffleAnimation();
+        }, 100)
+        setTimeout(() => {
+            unShuffleAnimation();
+        }, 700)
     }, [difficulty, doneRenderingSkins]);
 
     function lostGame() {

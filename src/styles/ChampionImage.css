@@ -100,7 +100,7 @@ img {
 }
 
 .card-container:hover {
-    transform: translateY(-0.9rem);
+    transform: translateY(-0.9rem) !important;
 }
 
 @media (max-width: 2600px) {
